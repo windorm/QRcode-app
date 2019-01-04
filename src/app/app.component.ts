@@ -22,9 +22,9 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'QR Code Generator ', component: HomePage },
-      { title: 'QR Code Scanner', component: ListPage },
-      { title: 'QR Code History', component: List2Page }
+      { title: 'Génération de QR Code', component: HomePage },
+      { title: 'Lecture de QR Code', component: ListPage },
+      { title: 'Historique', component: List2Page }
     ];
 
   }
