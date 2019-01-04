@@ -8,12 +8,12 @@
 </ion-header>
 
 <ion-content padding>
-  <button ion-button full icon-left (click)="scanCode()" color="secondary"><ion-icon name="qr-scanner"></ion-icon>Scanner un QR code</button>
-
- 
+  <button ion-button full icon-left (click)="scanCode()" color="primary"><ion-icon name="camera"></ion-icon>Scanner un QR code (appareil photo)</button>
   <ion-card *ngIf="scannedCode">
     <ion-card-content>
       Resultat du scanner : {{ scannedCode }}
     </ion-card-content>
   </ion-card>
+    <button ion-button full icon-left color="secondary"><ion-icon name="images"></ion-icon>Scanner un QR code (galerie photo)</button>
+
 </ion-content>

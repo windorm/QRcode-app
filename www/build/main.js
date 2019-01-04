@@ -43,7 +43,7 @@ var List2Page = (function () {
     };
     List2Page = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'page-list2',template:/*ion-inline-start:"/Users/arnaud-barriol/Documents/GitHub/QRcode-app/src/pages/list2/list2.html"*/`<ion-header>\n    <ion-navbar>\n      <button ion-button menuToggle>\n        <ion-icon name="menu"></ion-icon>\n      </button>\n      <ion-title>Historique</ion-title>\n    </ion-navbar>\n  </ion-header>\n\n\n<ion-content padding>\n\n    <ion-list>\n\n        <ion-item *ngFor="let qrcode of qrcodes">\n          <ion-label>{{qrcode.text}} -<i> {{qrcode.createdAt | date: \'dd/mm/yyyy\'}}</i></ion-label>\n        </ion-item>\n  \n    </ion-list>\n\n</ion-content>\n`/*ion-inline-end:"/Users/arnaud-barriol/Documents/GitHub/QRcode-app/src/pages/list2/list2.html"*/,
+            selector: 'page-list2',template:/*ion-inline-start:"/Users/arnaud-barriol/Documents/GitHub/QRcode-app/src/pages/list2/list2.html"*/`<ion-header>\n    <ion-navbar>\n      <button ion-button menuToggle>\n        <ion-icon name="menu"></ion-icon>\n      </button>\n      <ion-title>Historique</ion-title>\n    </ion-navbar>\n  </ion-header>\n\n\n<ion-content padding>\n\n    <ion-list>\n\n        <ion-item *ngFor="let qrcode of qrcodes">\n          <ion-label><strong>{{qrcode.text}}</strong> - <i>({{qrcode.createdAt | date: \'dd/MM/yyyy - HH:mm:ss\'}})</i></ion-label>\n        </ion-item>\n  \n    </ion-list>\n\n</ion-content>\n`/*ion-inline-end:"/Users/arnaud-barriol/Documents/GitHub/QRcode-app/src/pages/list2/list2.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_0__providers_qr_code_qr_code__["a" /* QrCodeProvider */]])
     ], List2Page);
@@ -188,10 +188,6 @@ var QrCodeProvider = (function () {
         });
         this.save();
         this.change.emit(this.qrcodes);
-        /*this.qrcodes.set(new Date().toISOString(), qrcode);
-        this.storage.set('user_qrcodes', this.qrcodes);
-        this.change.emit(Array.from(this.qrcodes.values()));
-        console.log(this.storage.get('user_qrcodes'));*/
     };
     QrCodeProvider.prototype.save = function () {
         return this.storage.set(QrCodeProvider_1.HISTORY_STORAGE_KEY, this.qrcodes);
@@ -221,7 +217,7 @@ var QrCodeProvider = (function () {
     QrCodeProvider.prototype.load = function () {
         this.change.emit(this.qrcodes);
     };
-    QrCodeProvider.HISTORY_STORAGE_KEY = 'coucou';
+    QrCodeProvider.HISTORY_STORAGE_KEY = 'bonjour';
     QrCodeProvider = QrCodeProvider_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _b || Object])
@@ -321,7 +317,7 @@ var ListPage = (function () {
     };
     ListPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-list',template:/*ion-inline-start:"/Users/arnaud-barriol/Documents/GitHub/QRcode-app/src/pages/list/list.html"*/`<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Lecture de QR Code</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <button ion-button full icon-left (click)="scanCode()" color="secondary"><ion-icon name="qr-scanner"></ion-icon>Scanner un QR code</button>\n\n \n  <ion-card *ngIf="scannedCode">\n    <ion-card-content>\n      Resultat du scanner : {{ scannedCode }}\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n`/*ion-inline-end:"/Users/arnaud-barriol/Documents/GitHub/QRcode-app/src/pages/list/list.html"*/
+            selector: 'page-list',template:/*ion-inline-start:"/Users/arnaud-barriol/Documents/GitHub/QRcode-app/src/pages/list/list.html"*/`<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Lecture de QR Code</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <button ion-button full icon-left (click)="scanCode()" color="primary"><ion-icon name="camera"></ion-icon>Scanner un QR code (appareil photo)</button>\n  <ion-card *ngIf="scannedCode">\n    <ion-card-content>\n      Resultat du scanner : {{ scannedCode }}\n    </ion-card-content>\n  </ion-card>\n    <button ion-button full icon-left color="secondary"><ion-icon name="images"></ion-icon>Scanner un QR code (galerie photo)</button>\n\n</ion-content>\n`/*ion-inline-end:"/Users/arnaud-barriol/Documents/GitHub/QRcode-app/src/pages/list/list.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ionic_native_barcode_scanner__["a" /* BarcodeScanner */]])
     ], ListPage);
