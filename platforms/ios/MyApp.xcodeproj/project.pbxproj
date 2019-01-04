@@ -47,6 +47,7 @@
 		23D45BDBCCB74DF4845CAC12 /* CDVBarcodeScanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C496CB53F4E249BF8537EE02 /* CDVBarcodeScanner.bundle */; };
 		51960608F0024A11B66D5630 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF875785A9348B7910B54DF /* AVFoundation.framework */; };
 		11C333C648824ED4A8E4A228 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A457ED0A59403A9D698C15 /* AudioToolbox.framework */; };
+		F249A57232C046D6BBF80E2B /* NativeStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 111AB6CC463643A2B3F6800F /* NativeStorage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +143,8 @@
 		C496CB53F4E249BF8537EE02 /* CDVBarcodeScanner.bundle */ = {isa = PBXFileReference; name = "CDVBarcodeScanner.bundle"; path = "CDVBarcodeScanner.bundle"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.plug-in; explicitFileType = undefined; includeInIndex = 0; };
 		BCF875785A9348B7910B54DF /* AVFoundation.framework */ = {isa = PBXFileReference; name = "AVFoundation.framework"; path = "System/Library/Frameworks/AVFoundation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		09A457ED0A59403A9D698C15 /* AudioToolbox.framework */ = {isa = PBXFileReference; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		111AB6CC463643A2B3F6800F /* NativeStorage.m */ = {isa = PBXFileReference; name = "NativeStorage.m"; path = "cordova-plugin-nativestorage/NativeStorage.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		4E59C18B58714658BF4109BB /* NativeStorage.h */ = {isa = PBXFileReference; name = "NativeStorage.h"; path = "cordova-plugin-nativestorage/NativeStorage.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +309,8 @@
 				170DA14B99F540D38809E0D9 /* IonicKeyboard.m */,
 				9DDECDDAB888497C91973A13 /* IonicKeyboard.h */,
 				F9423E55AE4D466999EFAA0F /* CDVBarcodeScanner.mm */,
+				111AB6CC463643A2B3F6800F /* NativeStorage.m */,
+				4E59C18B58714658BF4109BB /* NativeStorage.h */,
 			);
 			name = Plugins;
 			path = "MyApp/Plugins";
@@ -443,6 +448,7 @@
 				798BCABCEEC64ADBBCD0FE44 /* SocialSharing.m in Sources */,
 				7AA7386F7B6E44278F9481FF /* IonicKeyboard.m in Sources */,
 				69A7E1865BC844D88C1E2272 /* CDVBarcodeScanner.mm in Resources */,
+				F249A57232C046D6BBF80E2B /* NativeStorage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

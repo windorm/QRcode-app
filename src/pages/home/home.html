@@ -18,6 +18,7 @@
     <ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
     <ion-card-content>
       <p>Texte transformé : {{ createdCode }}</p>
+      <button ion-button full icon-left (click)="share()"><ion-icon name="share"></ion-icon>Partager ce QR code</button>
     </ion-card-content>
   </ion-card>
 

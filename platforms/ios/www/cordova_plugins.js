@@ -54,6 +54,24 @@ module.exports = [
     "clobbers": [
       "cordova.plugins.barcodeScanner"
     ]
+  },
+  {
+    "id": "cordova-plugin-nativestorage.mainHandle",
+    "file": "plugins/cordova-plugin-nativestorage/www/mainHandle.js",
+    "pluginId": "cordova-plugin-nativestorage",
+    "clobbers": [
+      "NativeStorage"
+    ]
+  },
+  {
+    "id": "cordova-plugin-nativestorage.LocalStorageHandle",
+    "file": "plugins/cordova-plugin-nativestorage/www/LocalStorageHandle.js",
+    "pluginId": "cordova-plugin-nativestorage"
+  },
+  {
+    "id": "cordova-plugin-nativestorage.NativeStorageError",
+    "file": "plugins/cordova-plugin-nativestorage/www/NativeStorageError.js",
+    "pluginId": "cordova-plugin-nativestorage"
   }
 ];
 module.exports.metadata = 
@@ -66,7 +84,8 @@ module.exports.metadata =
   "es6-promise-plugin": "4.2.2",
   "cordova-plugin-x-socialsharing": "5.4.4",
   "ionic-plugin-keyboard": "2.2.1",
-  "phonegap-plugin-barcodescanner": "8.0.1"
+  "phonegap-plugin-barcodescanner": "8.0.1",
+  "cordova-plugin-nativestorage": "2.3.2"
 };
 // BOTTOM OF METADATA
 });

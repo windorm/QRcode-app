@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import qrcode from 'qrcode';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 /*
   Generated class for the QrCodeProvider provider.
@@ -15,8 +17,17 @@ export class QrCodeProvider {
   }
 
   generate(text: string): Promise<string> {
-    //TODO: Code this
-    return Promise.resolve('');
+    return new Promise<string>((resolve, reject) => {
+      qrcode.toDataURL(text, { errorCorrectionLevel: 'H' }, function (err, url) {
+        if (err) {
+            reject(err);
+        } else {
+            resolve(url);
+        }
+      })
+    })
   }
+
+  
 
 }
