@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import qrcode from 'qrcode';
-import { NativeStorage } from '@ionic-native/native-storage';
+import { Injectable, EventEmitter } from '@angular/core';
+import { Storage } from '@ionic/storage';
+import { qrcode } from 'qrcode';
 
 /*
   Generated class for the QrCodeProvider provider.
@@ -11,8 +11,11 @@ import { NativeStorage } from '@ionic-native/native-storage';
 */
 @Injectable()
 export class QrCodeProvider {
+  private qrcodes: Array<{ text:string, createdAt: Date }> = [];
+  public change: EventEmitter<any[]> = new EventEmitter();
+  static HISTORY_STORAGE_KEY: string = 'coucou';
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private storage: Storage) {
     console.log('Hello QrCodeProvider Provider');
   }
 
@@ -27,6 +30,35 @@ export class QrCodeProvider {
       })
     })
   }
+
+  addQRCode(text: string) {
+    this.qrcodes.push({
+        text,
+        createdAt: new Date()
+    });
+    this.save();
+    this.change.emit(this.qrcodes);
+    /*this.qrcodes.set(new Date().toISOString(), qrcode);
+    this.storage.set('user_qrcodes', this.qrcodes);
+    this.change.emit(Array.from(this.qrcodes.values()));
+    console.log(this.storage.get('user_qrcodes'));*/
+}
+save() {
+    return this.storage.set(QrCodeProvider.HISTORY_STORAGE_KEY, this.qrcodes);
+}
+
+private async init() {
+    try {
+        this.qrcodes = await this.storage.get(QrCodeProvider.HISTORY_STORAGE_KEY) || [];
+        this.change.emit(this.qrcodes);
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+public load() {
+    this.change.emit(this.qrcodes);
+}
 
   
 

@@ -19,7 +19,7 @@ export class HomePage {
  
   share(): void {
     this.socialSharing.shareWithOptions({
-      message: 'Scannez ce QR Code pour le texte "' + this.qrData.text + '"',
+      message: 'Scannez ce QR Code avec le texte "' + this.qrData.text + '"',
       files: [this.qrData]
     })
   }
