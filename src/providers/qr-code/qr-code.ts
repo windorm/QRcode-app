@@ -57,7 +57,7 @@ private async init() {
 }
 
 public load() {
-    this.change.emit(this.qrcodes);
+  this.change.emit(this.qrcodes);
 }
 
   

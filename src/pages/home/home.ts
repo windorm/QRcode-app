@@ -1,3 +1,4 @@
+import { QrCodeProvider } from './../../providers/qr-code/qr-code';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
@@ -11,10 +12,13 @@ export class HomePage {
   qrData = null;
   createdCode = null;
  
-  constructor(private barcodeScanner: BarcodeScanner, private socialSharing: SocialSharing) { }
+  constructor(private barcodeScanner: BarcodeScanner,
+     private socialSharing: SocialSharing,
+     private qrCodeProvider: QrCodeProvider) { }
  
   createCode() {
     this.createdCode = this.qrData;
+    this.qrCodeProvider.addQRCode(this.qrData);
   }
  
   share(): void {

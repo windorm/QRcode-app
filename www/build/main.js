@@ -43,7 +43,7 @@ var List2Page = (function () {
     };
     List2Page = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'page-list2',template:/*ion-inline-start:"/Users/arnaud-barriol/Documents/GitHub/QRcode-app/src/pages/list2/list2.html"*/`<ion-header>\n    <ion-navbar>\n      <button ion-button menuToggle>\n        <ion-icon name="menu"></ion-icon>\n      </button>\n      <ion-title>Historique</ion-title>\n    </ion-navbar>\n  </ion-header>\n\n\n<ion-content padding>\n\n    <ion-list>\n\n        <ion-item *ngFor="let qrcode of qrcodes">\n          <ion-label>{{qrcode.text}} - {{qrcode.createdAt | date: \'dd/mm/yyyy\'}}</ion-label>\n        </ion-item>\n  \n    </ion-list>\n\n</ion-content>\n`/*ion-inline-end:"/Users/arnaud-barriol/Documents/GitHub/QRcode-app/src/pages/list2/list2.html"*/,
+            selector: 'page-list2',template:/*ion-inline-start:"/Users/arnaud-barriol/Documents/GitHub/QRcode-app/src/pages/list2/list2.html"*/`<ion-header>\n    <ion-navbar>\n      <button ion-button menuToggle>\n        <ion-icon name="menu"></ion-icon>\n      </button>\n      <ion-title>Historique</ion-title>\n    </ion-navbar>\n  </ion-header>\n\n\n<ion-content padding>\n\n    <ion-list>\n\n        <ion-item *ngFor="let qrcode of qrcodes">\n          <ion-label>{{qrcode.text}} -<i> {{qrcode.createdAt | date: \'dd/mm/yyyy\'}}</i></ion-label>\n        </ion-item>\n  \n    </ion-list>\n\n</ion-content>\n`/*ion-inline-end:"/Users/arnaud-barriol/Documents/GitHub/QRcode-app/src/pages/list2/list2.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_0__providers_qr_code_qr_code__["a" /* QrCodeProvider */]])
     ], List2Page);
@@ -224,10 +224,10 @@ var QrCodeProvider = (function () {
     QrCodeProvider.HISTORY_STORAGE_KEY = 'coucou';
     QrCodeProvider = QrCodeProvider_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _b || Object])
     ], QrCodeProvider);
     return QrCodeProvider;
-    var QrCodeProvider_1;
+    var QrCodeProvider_1, _a, _b;
 }());
 
 //# sourceMappingURL=qr-code.js.map
@@ -239,9 +239,10 @@ var QrCodeProvider = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_barcode_scanner__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_qr_code_qr_code__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_social_sharing__ = __webpack_require__(213);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -254,15 +255,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var HomePage = (function () {
-    function HomePage(barcodeScanner, socialSharing) {
+    function HomePage(barcodeScanner, socialSharing, qrCodeProvider) {
         this.barcodeScanner = barcodeScanner;
         this.socialSharing = socialSharing;
+        this.qrCodeProvider = qrCodeProvider;
         this.qrData = null;
         this.createdCode = null;
     }
     HomePage.prototype.createCode = function () {
         this.createdCode = this.qrData;
+        this.qrCodeProvider.addQRCode(this.qrData);
     };
     HomePage.prototype.share = function () {
         this.socialSharing.shareWithOptions({
@@ -271,12 +275,13 @@ var HomePage = (function () {
         });
     };
     HomePage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"/Users/arnaud-barriol/Documents/GitHub/QRcode-app/src/pages/home/home.html"*/`<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Génération de QR Code</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-item>\n    <ion-input type="text" placeholder="Texte à transformer en QR code" [(ngModel)]="qrData">\n    </ion-input>\n  </ion-item>\n  <button ion-button full icon-left (click)="createCode()"><ion-icon name="barcode"></ion-icon>Générer un QR code</button>\n \n  <ion-card *ngIf="createdCode">\n    <ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>\n    <ion-card-content>\n      <p>Texte transformé : {{ createdCode }}</p>\n      <button ion-button full icon-left (click)="share()"><ion-icon name="share"></ion-icon>Partager ce QR code</button>\n    </ion-card-content>\n  </ion-card>\n\n</ion-content>\n`/*ion-inline-end:"/Users/arnaud-barriol/Documents/GitHub/QRcode-app/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ionic_native_barcode_scanner__["a" /* BarcodeScanner */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__["a" /* SocialSharing */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__["a" /* BarcodeScanner */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__["a" /* BarcodeScanner */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_social_sharing__["a" /* SocialSharing */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_social_sharing__["a" /* SocialSharing */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__providers_qr_code_qr_code__["a" /* QrCodeProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__providers_qr_code_qr_code__["a" /* QrCodeProvider */]) === "function" && _c || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=home.js.map
